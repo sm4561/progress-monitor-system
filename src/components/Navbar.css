@@ -1,0 +1,262 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  height: 64px;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* LOGO STYLES */
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 12px;
+  margin-right: 40px;
+}
+
+.logo-img {
+  height: 36px; /* Adjust size as needed */
+  width: auto;
+}
+
+.logo-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* PROFILE DROPDOWN */
+.profile-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.user-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.user-circle:hover {
+  transform: scale(1.05);
+}
+
+/* Dropdown Menu Box */
+.dropdown-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 200px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.2s ease;
+}
+
+.dropdown-header {
+  padding: 8px 12px;
+}
+
+.user-name {
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.user-email {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 2px 0 0 0;
+  word-break: break-all;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 8px 0;
+  width: 100%;
+}
+
+.dropdown-item {
+  text-decoration: none;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  border-radius: 8px;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.dropdown-item:hover {
+  background: var(--hover-bg);
+}
+
+.dropdown-item.logout {
+  color: #ef4444; /* Red for logout */
+}
+
+.dropdown-item.logout:hover {
+  background: #fef2f2;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* ... keep your existing CSS ... */
+
+
+
+/* --- AUTH BUTTONS --- */
+.auth-buttons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nav-btn-link {
+  text-decoration: none;
+  color: var(--text-primary); /* Use Primary Text Color */
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.nav-btn-primary {
+  text-decoration: none;
+  /* ✅ FORCE COLOR: Ensure it's visible in Light Mode */
+  background-color: #1e3a8a; 
+  color: white !important;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: opacity 0.2s;
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+/* In Dark Mode, make it lighter so it glows */
+[data-theme='dark'] .nav-btn-primary {
+  background-color: #4f46e5;
+}
+
+.nav-btn-primary:hover {
+  opacity: 0.9;
+}
+/* ✅ Avatar in Navbar */
+/* ✅ Avatar in Navbar */
+.user-avatar-small {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; 
+  object-fit: cover;
+  border: 2px solid #e5e7eb;
+  cursor: pointer;
+}
+/* Navbar.css - Add this at the very bottom */
+
+/* --- MOBILE RESPONSIVE --- */
+.mobile-menu-btn {
+  display: none; /* Hidden on desktop */
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #1e3a8a;
+  padding: 5px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 15px;
+  }
+
+  /* Hide normal links on mobile */
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #e5e7eb;
+    gap: 15px;
+    z-index: 999;
+  }
+
+  /* Show links when active */
+  .nav-links.active {
+    display: flex;
+  }
+
+  /* Show the Hamburger Button */
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  /* Adjust Logo */
+  .logo-text {
+    font-size: 1rem; /* Smaller text on phone */
+  }
+
+  .logo-link {
+    margin-right: 0;
+  }
+  
+  /* Hide Profile Name on Mobile (Save space) */
+  .user-name, .user-email {
+    display: none;
+  }
+}

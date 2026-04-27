@@ -1,0 +1,135 @@
+/* Reminders.css */
+
+:root {
+  --primary: #4f46e5; /* Indigo-600 */
+  --primary-dark: #4338ca;
+  --bg-page: #f3f4f6; /* Gray-100 */
+  --bg-card: #ffffff;
+  --text-main: #111827; /* Gray-900 */
+  --text-muted: #6b7280; /* Gray-500 */
+  --border-color: #e5e7eb; /* Gray-200 */
+  --danger: #ef4444;
+  
+  /* Tag Colors */
+  --color-general: #9ca3af;
+  --color-idea: #f59e0b;
+  --color-code: #3b82f6;
+  --color-important: #ef4444;
+  --color-todo: #10b981;
+}
+
+.reminders-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  background-color: var(--bg-page);
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.loading-container { display: flex; justify-content: center; padding-top: 50px; }
+.spinner { border: 3px solid #f3f3f3; border-top: 3px solid var(--primary); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* Header */
+.reminders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.reminders-header h1 { font-size: 2.2rem; font-weight: 800; color: #1e3a8a; margin: 0; }
+.reminders-header p { color: var(--text-muted); margin: 4px 0 0 0; font-size: 1rem; }
+.stat-pill { background: #e0e7ff; color: var(--primary-dark); padding: 6px 14px; border-radius: 9999px; font-weight: 600; font-size: 0.875rem; }
+
+/* Input Card */
+.add-reminder-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border-color);
+  margin-bottom: 40px;
+}
+.add-reminder-card.main-input { 
+  /* border-top: 4px solid var(--primary);  <-- I REMOVED THIS LINE */
+  border-top: 1px solid var(--border-color); /* Just a normal subtle border now */
+}
+
+.reminder-input {
+  width: 100%; border: none; font-size: 1.125rem; color: var(--text-main); outline: none; resize: none; background: transparent; font-family: inherit; margin-bottom: 16px;
+}
+.reminder-input::placeholder { color: #9ca3af; }
+
+.input-row-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 16px; }
+.input-tools { display: flex; gap: 12px; }
+
+.clean-select, .clean-date-input {
+  padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 8px; background: #f9fafb; color: var(--text-main); font-size: 0.9rem; outline: none; transition: all 0.15s;
+}
+.clean-select:focus, .clean-date-input:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); }
+
+.add-btn {
+  background: var(--primary); color: white; border: none; padding: 9px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.15s;
+}
+.add-btn:hover { background: var(--primary-dark); }
+
+/* Grid & Cards */
+.notes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+
+.note-card {
+  background: var(--bg-card); border-radius: 16px; padding: 20px; 
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); border: 1px solid var(--border-color);
+  display: flex; flex-direction: column; transition: all 0.2s;
+  border-left: 5px solid var(--color-general);
+}
+.note-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+.note-card.pinned { background-color: #f5f7ff; border-color: #c7d2fe; }
+
+/* Tag Borders */
+.border-general { border-left-color: var(--color-general); }
+.border-idea { border-left-color: var(--color-idea); }
+.border-code { border-left-color: var(--color-code); }
+.border-important { border-left-color: var(--color-important); }
+.border-to-do { border-left-color: var(--color-todo); }
+
+.note-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+.note-meta { display: flex; flex-direction: column; gap: 6px; }
+.badge { display: inline-block; font-size: 0.7rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; color: var(--text-muted); }
+
+.date-badge { font-size: 0.85rem; font-weight: 500; color: var(--text-main); display: flex; align-items: center; gap: 6px; }
+.date-badge.overdue { color: var(--danger); }
+.relative-date { color: var(--text-muted); font-weight: 400; }
+.date-badge.overdue .relative-date { color: #fca5a5; }
+
+.note-content p { color: var(--text-main); font-size: 1rem; line-height: 1.6; white-space: pre-wrap; margin: 0; }
+.note-content { margin-bottom: 20px; flex-grow: 1; }
+
+.note-footer { display: flex; justify-content: flex-end; gap: 16px; border-top: 1px solid var(--border-color); padding-top: 14px; }
+.action-link { background: none; border: none; cursor: pointer; font-size: 0.875rem; font-weight: 600; color: var(--text-muted); padding: 0; transition: color 0.15s; }
+.action-link:hover { color: var(--primary); }
+.action-link.delete:hover { color: var(--danger); }
+
+/* New Pin Icon */
+.pin-btn { background: none; border: none; cursor: pointer; color: #d1d5db; padding: 4px; transition: all 0.15s; }
+.pin-btn:hover { color: var(--text-muted); background: #f3f4f6; border-radius: 6px; }
+.pin-btn.active { color: var(--primary); }
+.pin-btn svg { width: 20px; height: 20px; }
+
+/* Edit Mode Styles */
+.note-card.editing { border-style: dashed; background: #f9fafb; }
+.edit-select { margin-bottom: 12px; width: 100%; }
+.edit-textarea { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; resize: vertical; font-family: inherit; margin-bottom: 12px; outline: none; }
+.edit-textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); background: white; }
+.edit-date { width: 100%; }
+.edit-footer { gap: 10px; }
+.save-btn, .cancel-btn { padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; border: none; font-size: 0.875rem; }
+.save-btn { background: var(--primary); color: white; }
+.save-btn:hover { background: var(--primary-dark); }
+.cancel-btn { background: white; border: 1px solid var(--border-color); color: var(--text-main); }
+.cancel-btn:hover { background: #f3f4f6; }
+
+/* Empty State */
+.empty-state { grid-column: 1 / -1; text-align: center; padding: 60px; color: var(--text-muted); background: var(--bg-card); border-radius: 16px; border: 2px dashed var(--border-color); }
+.empty-icon { font-size: 3.5rem; margin-bottom: 16px; display: block; }
+.empty-state h3 { color: var(--text-main); margin: 0 0 8px 0; }

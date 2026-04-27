@@ -1,0 +1,194 @@
+/* =========================================
+   1. GLOBAL THEME VARIABLES
+   ========================================= */
+:root {
+  /* --- LIGHT THEME (Default) --- */
+  --bg-color: #f3f4f6;           /* Cool Light Gray Background */
+  --card-bg: #ffffff;            /* Pure White Cards */
+  
+  --text-primary: #1f2937;       /* Dark Grey Text */
+  --text-secondary: #6b7280;     /* Muted/Grey Text */
+  
+  --heading-color: #1e3a8a;      /* ✅ YOUR NEW DEEP ROYAL BLUE */
+  --border-color: #e5e7eb;       /* Light Grey Borders */
+  
+  /* Status Colors */
+  --accent-blue: #4f46e5;        /* Indigo (Buttons/Links) */
+  --accent-green: #10b981;       /* Success */
+  --accent-purple: #8b5cf6;      /* Highlight */
+  --accent-red: #ef4444;         /* Error/Danger */
+}
+
+[data-theme='dark'] {
+  /* --- DARK THEME OVERRIDES --- */
+  --bg-color: #111827;           /* Very Dark Blue/Grey */
+  --card-bg: #1f2937;            /* Dark Grey Cards */
+  
+  --text-primary: #f9fafb;       /* Near White Text */
+  --text-secondary: #9ca3af;     /* Light Grey Text */
+  
+  --heading-color: #818cf8;      /* Lighter Indigo (Readable on Dark) */
+  --border-color: #374151;       /* Dark Borders */
+}
+
+/* =========================================
+   2. GLOBAL RESET & TYPOGRAPHY
+   ========================================= */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color); /* ✅ Applies Gray BG Globally */
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  min-height: 100vh; /* Ensures app fills the screen */
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color);
+}
+
+/* Global Link Styles */
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+   3. AUTH PAGES (Login, Signup)
+   ========================================= */
+.auth-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-color); /* Matches Global Theme */
+  padding: 20px;
+}
+
+.auth-shell {
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-card {
+  background: var(--card-bg);
+  padding: 40px 30px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+  text-align: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.auth-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--heading-color); /* ✅ Uses Royal Blue */
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.auth-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.auth-form {
+  text-align: left;
+}
+
+.auth-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  margin-top: 15px;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--bg-color); /* Input matches page BG */
+  color: var(--text-primary);
+  transition: all 0.2s;
+  box-sizing: border-box; /* Prevents overflow */
+}
+
+.auth-input:focus {
+  border-color: var(--accent-blue);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 25px;
+  background-color: var(--heading-color); /* ✅ Royal Blue Button */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.auth-btn:hover {
+  opacity: 0.9;
+}
+
+.auth-btn:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.auth-footer {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.auth-link {
+  color: var(--heading-color);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Status Messages */
+.auth-error {
+  background-color: #fee2e2;
+  color: #ef4444;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-top: 15px;
+  text-align: center;
+  border: 1px solid #fecaca;
+}
+
+.auth-success {
+  background-color: #dcfce7;
+  color: #16a34a;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-top: 15px;
+  text-align: center;
+  border: 1px solid #bbf7d0;
+}

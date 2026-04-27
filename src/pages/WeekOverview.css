@@ -1,0 +1,242 @@
+/* Top Nav Layout */
+.week-nav-top {
+  display: flex;
+  justify-content: flex-end; /* Push to right */
+  margin-bottom: 20px;
+}
+
+/* Minimal Text Button Style */
+.minimal-nav-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+  padding: 8px 0;
+}
+
+.minimal-nav-btn:hover {
+  color: var(--primary);
+  transform: translateX(4px); /* Slight movement right */
+}
+
+/* ... keep rest of CSS ... */
+/* Navigation Top Bar */
+.week-nav-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: 0.2s;
+  padding: 8px 0;
+}
+
+.back-btn:hover {
+  color: var(--primary);
+  transform: translateX(-4px);
+}
+
+.log-btn {
+  background: var(--bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.log-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* ... keep the rest of your CSS below ... */
+.week-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* HEADER */
+.week-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  background: var(--card-bg);
+  padding: 20px 30px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+}
+
+.week-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-color);
+  letter-spacing: -0.02em;
+}
+
+.week-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+.week-select {
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--bg);
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: 0.2s;
+}
+
+.week-select:hover {
+  border-color: var(--primary);
+}
+
+/* GRID LAYOUT */
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* DAY CARD */
+.day-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.day-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: var(--primary);
+}
+
+/* Status Styles */
+.day-card.completed { border-top: 4px solid #22c55e; }
+.day-card.in-progress { border-top: 4px solid #3b82f6; }
+.day-card.pending { border-top: 4px solid var(--border-color); opacity: 0.9; }
+
+/* Card Header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.day-badge {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.status-icon {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #22c55e;
+  background: #dcfce7;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+/* Card Body (Tasks) */
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.mini-task {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  line-height: 1.4;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.topic-dot { background: #3b82f6; } /* Blue for topics */
+.problem-dot { background: #f59e0b; } /* Orange for problems */
+
+/* Footer Progress */
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mini-progress-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--bg);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.mini-fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+.day-card.completed .mini-fill { background: #22c55e; }
+
+.mini-percent {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .week-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .week-select {
+    width: 100%;
+  }
+}

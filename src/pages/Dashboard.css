@@ -1,0 +1,355 @@
+/* --- PAGE LAYOUT --- */
+.dashboard-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 30px;
+  animation: fadeIn 0.5s ease-out;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dashboard-header {
+  margin-bottom: 35px;
+}
+
+
+.dashboard-header p {
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+/* --- STATS GRID --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stat-card h3 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.1;
+}
+
+/* Colors */
+.blue { color: #4f46e5; }
+.green { color: #10b981; }
+.orange { color: #f97316; }
+.purple { color: #8b5cf6; }
+.unit { font-size: 1rem; color: #6b7280; font-weight: 500; margin-left: 4px; }
+
+/* --- CHARTS GRID --- */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.chart-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.chart-header h3 { margin: 0; color: #374151; font-size: 1.1rem; }
+
+/* Chart Nav Buttons */
+.chart-nav { display: flex; gap: 5px; }
+.chart-nav button {
+  width: 28px; height: 28px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: #6b7280; font-size: 1rem;
+}
+.chart-nav button:hover:not(:disabled) {
+  border-color: #4f46e5; color: #4f46e5;
+}
+.chart-nav button:disabled { opacity: 0.5; cursor: default; }
+
+.chart-subtitle {
+  font-size: 0.85rem; color: #6b7280; margin-top: -15px; margin-bottom: 15px; font-weight: 500;
+}
+
+/* --- ✅ BOTTOM SECTION (FIXED LAYOUT) --- */
+.bottom-section-grid {
+  display: grid;
+  /* 1fr for Estimate Card, 2fr for Calendar (Balanced look) */
+  grid-template-columns: 1fr 2fr; 
+  gap: 20px; /* Reduced gap as requested */
+  margin-top: 10px;
+  align-items: stretch; /* Makes both cards same height */
+}
+
+
+
+.stat-subtext {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 8px;
+}
+
+/* 2. Consistency Calendar Section */
+.calendar-section {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  height: 100%; /* Fill the grid cell height */
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.calendar-header h3 { margin: 0; color: #374151; font-size: 1.1rem; }
+
+.calendar-nav { display: flex; align-items: center; gap: 10px; }
+.calendar-nav button {
+  background: none; border: 1px solid #e5e7eb; border-radius: 6px;
+  width: 28px; height: 28px; cursor: pointer; color: #6b7280;
+  display: flex; align-items: center; justify-content: center;
+}
+.calendar-nav button:hover { border-color: #4f46e5; color: #4f46e5; }
+.calendar-nav span { font-weight: 600; color: #374151; font-size: 0.9rem; width: 100px; text-align: center; }
+
+/* ✅ FIXED GRID: Perfect fit */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px; /* Nice spacing between circles */
+  width: 100%; 
+  max-width: 600px; /* Prevent it from getting too wide */
+  margin: 0 auto; /* Center inside the card */
+  flex-grow: 1; /* Push to center vertically */
+  align-content: center;
+}
+
+.cal-day-label {
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #9ca3af;
+  margin-bottom: 5px;
+}
+
+.cal-day-wrapper {
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Calendar Dots */
+.cal-day-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #f3f4f6; 
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.cal-day-circle.present { background: #10b981; color: white; }
+.cal-day-circle.absent { background: #ef4444; color: white; opacity: 0.9; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .bottom-section-grid { grid-template-columns: 1fr; }
+  .est-speed-card { min-height: auto; }
+}
+/* ... [Keep all existing CSS] ... */
+
+/* ✅ UPDATED: CENTERED ESTIMATED DAYS CARD */
+.est-speed-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Horizontally center content */
+  text-align: center;  /* Ensure text lines are centered */
+  min-height: 320px;
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+}
+
+/* Update title alignment specifically for this card */
+.est-speed-card h3 {
+  width: 100%;
+  text-align: center;
+}
+
+.stat-subtext {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 10px;
+  max-width: 80%; /* Prevent line getting too wide */
+  line-height: 1.4;
+}
+
+/* Ensure the calendar fills the grid height properly */
+.calendar-section {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+/* --- PAGE LAYOUT --- */
+.dashboard-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 30px;
+  animation: fadeIn 0.5s ease-out;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.dashboard-header h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  /* ✅ USE VARIABLE: Changes automatically */
+  color:#1e3a8a !important; 
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.dashboard-header p {
+  color: var(--text-secondary); /* ✅ Variable */
+  font-size: 1.1rem;
+}
+
+/* --- CARDS (Stats & Charts) --- */
+.stat-card, .chart-card, .est-speed-card, .calendar-section {
+  background: var(--card-bg);       /* ✅ Variable: White or Dark Grey */
+  border: 1px solid var(--border-color); /* ✅ Variable */
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* Text inside cards */
+.chart-header h3, .calendar-header h3, .stat-card h3 {
+  color: var(--text-secondary); /* ✅ Variable */
+}
+
+/* Chart Nav Buttons */
+.chart-nav button, .calendar-nav button {
+  background: var(--bg-color); /* ✅ Variable */
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+/* Calendar Dots (Specific Fixes) */
+.cal-day-circle {
+  background: var(--bg-color); /* Matches page background in empty state */
+  color: var(--text-secondary);
+}
+/* Keep Green/Red the same as they imply status */
+.cal-day-circle.present { background: #10b981; color: white; }
+.cal-day-circle.absent { background: #ef4444; color: white; }
+
+/* Grid Lines in Charts (Optional but nice) */
+/* You can't easily change SVG stroke in CSS, but this handles the container */
+/* Dashboard.css - Add this at the bottom */
+
+/* ✅ MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .dashboard-page {
+    padding: 20px 15px; /* Less padding on phone */
+  }
+  
+  .dashboard-header h1 {
+    font-size: 1.8rem; /* Smaller title */
+  }
+
+  /* Stack Stats: 2 columns instead of auto-fit */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px;
+  }
+  .stat-card {
+    padding: 15px;
+  }
+  .stat-value {
+    font-size: 1.5rem;
+  }
+  .stat-card h3 {
+    font-size: 0.65rem;
+  }
+
+  /* Stack Charts */
+  .charts-grid {
+    grid-template-columns: 1fr; /* 1 column */
+  }
+  
+  /* Stack Bottom Section */
+  .bottom-section-grid {
+    grid-template-columns: 1fr; /* Stack vertically */
+  }
+  
+  .est-speed-card {
+    min-height: auto;
+    margin-bottom: 20px;
+  }
+
+  /* Calendar Adjustments */
+  .calendar-grid {
+    gap: 5px;
+  }
+  .cal-day-circle {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+}

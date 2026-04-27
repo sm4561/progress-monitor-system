@@ -1,0 +1,111 @@
+.calendar-container {
+  padding-top: 5px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  font-weight: 700;
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+.calendar-header button {
+  background: var(--bg);
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.calendar-header button:hover:not(:disabled) {
+  background: var(--hover-bg);
+  color: var(--primary);
+}
+
+.calendar-header button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px; /* Space between dots */
+  text-align: center;
+}
+
+.day-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.calendar-day-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px; /* Fixed height for rows */
+}
+
+/* THE DOT STYLE */
+.calendar-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  
+  /* Flexbox to center the number */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  font-size: 0.75rem; /* Number size */
+  font-weight: 600;
+  transition: 0.2s ease;
+  cursor: default;
+}
+
+/* Status Colors */
+.present-day { 
+  background: #22c55e; 
+  color: white; 
+  box-shadow: 0 2px 5px rgba(34, 197, 94, 0.4);
+} 
+
+.excused-day { 
+  background: #3b82f6; 
+  color: white; 
+  box-shadow: 0 2px 5px rgba(59, 130, 246, 0.4);
+} 
+
+.absent-day  { 
+  background: #ef4444; 
+  color: white; 
+  box-shadow: 0 2px 5px rgba(239, 68, 68, 0.4);
+} 
+
+/* Future days (Transparent) */
+.future-day { 
+  background: transparent; 
+  color: var(--text-muted);
+  opacity: 0.3;
+}
+
+/* Empty/Default days (Not logged yet) */
+.empty-day { 
+  background: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.empty-day:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}

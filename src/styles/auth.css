@@ -1,0 +1,136 @@
+/* ---------- PREMIUM AUTH UI (Apple + Notion Inspired) ---------- */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Soft pastel gradient */
+  background: linear-gradient(135deg, #eef2ff, #c7d2fe, #a5b4fc);
+  padding: 2rem;
+}
+
+/* Card */
+.auth-card {
+  width: 100%;
+  max-width: 430px;
+  padding: 2.5rem 2rem;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  color: #1e293b;
+}
+
+/* Titles */
+.auth-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.3rem;
+}
+
+.auth-subtitle {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-bottom: 1.4rem;
+  line-height: 1.4;
+}
+
+/* Labels */
+.auth-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #334155;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+/* Inputs */
+.auth-input {
+  width: 100%;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+
+  font-size: 0.95rem;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.auth-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+  background: white;
+}
+
+.auth-input::placeholder {
+  color: #94a3b8;
+}
+
+/* Button */
+.auth-btn {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.85rem;
+
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+
+  color: white;
+  cursor: pointer;
+  transition: 0.15s ease;
+
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+}
+
+.auth-btn:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+.auth-btn:active {
+  transform: scale(0.97);
+}
+
+/* Footer */
+.auth-footer {
+  margin-top: 1rem;
+  text-align: center;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.auth-link {
+  color: #3b82f6;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+/* Messages */
+.auth-error {
+  color: #dc2626;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.auth-success {
+  color: #16a34a;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+}

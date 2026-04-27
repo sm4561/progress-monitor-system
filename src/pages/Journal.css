@@ -1,0 +1,223 @@
+/* Journal.css */
+
+/* --- LAYOUT --- */
+.journal-container {
+  display: flex; 
+  height: calc(100vh - 64px);
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+}
+
+/* --- SIDEBAR --- */
+.journal-sidebar {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+  flex-shrink: 0; 
+}
+
+.sidebar-header {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.search-wrapper { position: relative; width: 100%; }
+.search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #9ca3af; font-size: 0.9rem; }
+.search-input { width: 100%; padding: 10px 10px 10px 35px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 0.95rem; box-sizing: border-box; background-color: #f9fafb; }
+.search-input:focus { outline: 2px solid #e0e7ff; border-color: #6366f1; background-color: white; }
+
+.new-entry-btn {
+  width: 100%; padding: 12px; background-color: #1e3a8a; color: white;
+  border: none; border-radius: 8px; font-weight: 600; cursor: pointer;
+  font-size: 0.95rem; transition: 0.2s; box-shadow: 0 2px 4px rgba(30, 58, 138, 0.2);
+}
+.new-entry-btn:hover { background-color: #1e40af; }
+
+.month-group { margin-bottom: 25px; }
+.month-header { font-size: 0.8rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; padding-left: 5px; font-weight: 700; }
+
+.entry-item {
+  display: flex; gap: 15px; padding: 12px; border-radius: 10px;
+  cursor: pointer; border: 1px solid transparent; transition: all 0.2s;
+  position: relative; margin-bottom: 8px; background: white;
+}
+.entry-item:hover { background: #f8fafc; transform: translateX(2px); }
+.entry-item.active { background: #eff6ff; border-color: #bfdbfe; box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1); }
+
+.entry-date-box {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: white; border: 1px solid #e5e7eb; border-radius: 8px;
+  min-width: 50px; height: 50px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.date-month { width: 100%; background-color: #4f46e5; color: white; font-size: 0.65rem; text-transform: uppercase; font-weight: 700; text-align: center; padding: 2px 0; }
+.date-day { font-size: 1.2rem; font-weight: 800; color: #1f2937; padding: 2px 0; }
+
+.entry-preview { flex-grow: 1; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
+.entry-snippet { font-size: 0.9rem; color: #6b7280; margin: 0 0 4px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.entry-title-preview { font-size: 0.95rem; color: #1f2937; font-weight: 700; margin: 0 0 4px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.entry-time { font-size: 0.75rem; color: #9ca3af; }
+
+.sidebar-delete { position: absolute; top: 5px; right: 5px; background: none; border: none; color: #9ca3af; font-size: 1.2rem; cursor: pointer; display: none; }
+.entry-item:hover .sidebar-delete { display: block; }
+.sidebar-delete:hover { color: #ef4444; }
+
+.resizer { width: 5px; background-color: transparent; cursor: col-resize; transition: background-color 0.2s; z-index: 10; border-left: 1px solid #e5e7eb; }
+.resizer:hover, .resizer:active { background-color: #3b82f6; }
+
+/* --- EDITOR --- */
+.journal-editor-area {
+  flex-grow: 1; display: flex; flex-direction: column; padding: 30px 50px;
+  transition: background-color 0.3s ease; overflow-y: auto;
+}
+
+.editor-toolbar {
+  display: flex; gap: 20px; margin-bottom: 20px; background: rgba(255, 255, 255, 0.9);
+  padding: 10px 20px; border-radius: 12px; width: fit-content;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); align-items: center;
+}
+
+.divider-v { width: 1px; height: 24px; background: #e5e7eb; }
+.color-picker-group { display: flex; align-items: center; gap: 10px; }
+.tool-label { font-size: 0.8rem; font-weight: 700; color: #6b7280; text-transform: uppercase; }
+.color-scroll { display: flex; gap: 6px; }
+
+.color-dot {
+  width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1);
+  cursor: pointer; transition: 0.2s;
+}
+.color-dot:hover { transform: scale(1.1); }
+.color-dot.selected { border: 2px solid #3b82f6 !important; transform: scale(1.25); }
+
+/* Range Slider for Font Size */
+/* Range Slider for Font Size */
+.size-slider {
+  width: 100px; 
+  height: 4px; 
+  background: #e5e7eb; 
+  border-radius: 2px; 
+  outline: none; 
+  -webkit-appearance: none; /* Required for Chrome/Safari */
+  appearance: none;         /* ✅ Add this standard line to remove the warning */
+}
+.size-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: #4f46e5; cursor: pointer;
+}
+
+.paper-sheet { flex-grow: 1; display: flex; flex-direction: column; }
+.current-date-header { font-size: 0.9rem; font-weight: 600; color: #6b7280; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* Title Input */
+.journal-title-input {
+  width: 100%; border: none; background: transparent; font-size: 2rem; font-weight: 800;
+  margin-bottom: 15px; outline: none; font-family: 'Inter', sans-serif;
+  border-bottom: 1px dashed transparent;
+}
+.journal-title-input:focus { border-bottom-color: #cbd5e1; }
+.journal-title-input::placeholder { color: rgba(0,0,0,0.2); }
+
+/* Textarea */
+.journal-textarea {
+  flex-grow: 1; width: 100%; background: transparent; border: none; resize: none;
+  line-height: 1.6; outline: none; font-family: 'Georgia', serif;
+}
+
+.editor-footer { margin-top: 20px; display: flex; justify-content: flex-end; }
+.save-journal-btn {
+  padding: 12px 30px; background-color: #10b981; color: white; border: none;
+  border-radius: 30px; font-weight: 700; cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: 0.2s;
+}
+.save-journal-btn:hover { background-color: #059669; transform: translateY(-1px); }
+/* ... existing code ... */
+
+/* ✅ ADD THIS AT THE BOTTOM FOR MOBILE */
+@media (max-width: 768px) {
+  .journal-container {
+    flex-direction: column; /* Stack Sidebar on top of Editor */
+    height: auto; /* Allow scrolling */
+    overflow: visible;
+  }
+
+  /* 1. Sidebar becomes a horizontal top bar or compact list */
+  .journal-sidebar {
+    width: 100% !important; /* Force full width */
+    height: auto;
+    max-height: 250px; /* Limit height so it doesn't take whole screen */
+    border-bottom: 1px solid #e5e7eb;
+    padding: 15px;
+  }
+
+  .resizer {
+    display: none; /* Hide drag handle on mobile */
+  }
+
+  /* 2. Editor takes remaining space */
+  .journal-editor-area {
+    padding: 20px 15px; /* Smaller padding */
+    height: 600px; /* Give it enough height */
+  }
+
+  .journal-title-input {
+    font-size: 1.5rem; /* Smaller title font */
+  }
+
+  /* 3. Toolbar adjustments */
+  .editor-toolbar {
+    flex-wrap: wrap; /* Allow tools to wrap */
+    width: 100%;
+    gap: 10px;
+  }
+  
+  .divider-v { display: none; } /* Hide dividers on small screens */
+}
+/* Journal.css - Add this at the end */
+
+/* ✅ MOBILE RESPONSIVE LAYOUT */
+@media (max-width: 768px) {
+  .journal-container {
+    flex-direction: column; /* Stack vertically: List on top, Editor below */
+    height: auto; /* Allow full scrolling */
+    overflow-y: auto;
+  }
+
+  /* 1. Sidebar becomes a compact top list */
+  .journal-sidebar {
+    width: 100% !important; /* Force full width */
+    height: auto;
+    max-height: 250px; /* Limit height so it doesn't cover everything */
+    border-right: none;
+    border-bottom: 2px solid #e5e7eb;
+    padding: 15px;
+  }
+
+  /* Hide the drag handle on mobile */
+  .resizer {
+    display: none; 
+  }
+
+  /* 2. Editor takes remaining space */
+  .journal-editor-area {
+    width: 100%;
+    padding: 20px 15px; /* Smaller padding */
+    min-height: 500px; /* Ensure enough space to type */
+  }
+
+  /* 3. Toolbar fixes */
+  .editor-toolbar {
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .divider-v { display: none; } /* Hide dividers to save space */
+  
+  .journal-title-input {
+    font-size: 1.6rem; /* Smaller title */
+  }
+}

@@ -1,0 +1,689 @@
+/* src/pages/LogToday.css */
+
+.log-today-container h1 {
+  font-size: 2.2rem;
+  color: #1e3a8a;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+/* --- LEFT SIDE --- */
+
+.settings-panel h3, .tasks-panel h3 {
+  font-size: 1.1rem;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.settings-panel label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6b7280;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.settings-panel select, .settings-panel input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 0.95rem;
+}
+
+
+/* --- RIGHT SIDE --- */
+.tasks-panel {
+  flex: 2;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+}
+
+/* --- NEW SECTIONS STYLING --- */
+
+
+.section-block:last-child {
+  border-bottom: none;
+}
+
+/* Topics Tags */
+.topics-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.topic-tag {
+  background-color: #e0e7ff;
+  color: #4338ca;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid #c7d2fe;
+}
+
+
+.task-item:hover {
+  background-color: #f9fafb;
+  border-color: #4f46e5;
+}
+
+.task-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 15px;
+  margin-top: 4px; /* Slight adjustment for alignment */
+  accent-color: #4f46e5;
+  cursor: pointer;
+}
+
+.task-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-name {
+  font-weight: 500;
+  color: #1f2937;
+  font-size: 1rem;
+}
+
+.task-desc {
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+.info-text {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Info Cards (Project/Interview) */
+
+
+.info-card.active {
+  background-color: #ecfdf5;
+  border-left-color: #10b981; /* Green */
+  color: #065f46;
+}
+
+/* --- CARD UPDATES --- */
+.card-actions input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #10b981;
+}
+
+.details-btn:hover {
+  border-color: #4f46e5;
+  color: #4f46e5;
+  background-color: #e0e7ff;
+}
+/* --- EXISTING STYLES (Keep your old ones, ensure these are present) --- */
+
+
+.topics-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.topic-tag { background: #f3f4f6; border: 1px solid #e5e7eb; padding: 8px 16px; border-radius: 20px; cursor: pointer; color: #4b5563; }
+.topic-tag.done { background: #ecfdf5; color: #065f46; border-color: #34d399; }
+.task-item { display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 8px; border: 1px solid #f3f4f6; }
+.info-card { padding: 15px; background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 8px; }
+
+/* --- NEW: EDITABLE FEATURES STYLES --- */
+
+/* Wrapper to hold the button AND the menu dots */
+.editable-item-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Ensure task item handles space for dots */
+.editable-task-item {
+  justify-content: space-between; 
+}
+
+/* 3 DOTS BUTTON */
+.options-menu-container {
+  position: relative;
+}
+
+.dots-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #9ca3af;
+  padding: 0 5px;
+  line-height: 1;
+}
+.dots-btn:hover { color: #4b5563; font-weight: bold; }
+
+/* DROPDOWN MENU */
+.options-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  min-width: 100px;
+  overflow: hidden;
+}
+
+.option-item {
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: #374151;
+}
+.option-item:hover { background: #f3f4f6; }
+.option-item.delete { color: #ef4444; }
+.option-item.delete:hover { background: #fee2e2; }
+
+
+/* EDIT MODAL (Popup) */
+.edit-modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 2000;
+}
+.edit-modal-box {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+}
+.edit-modal-box h3 { margin-top: 0; margin-bottom: 15px; }
+.edit-modal-box textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-family: inherit;
+  resize: vertical;
+}
+.edit-modal-actions {
+  display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px;
+}
+.edit-modal-actions button {
+  padding: 8px 16px; border-radius: 6px; cursor: pointer; border: none;
+}
+.edit-modal-actions .save-btn { background: #4f46e5; color: white; }
+/* --- MODAL STYLES --- */
+
+.modal-content {
+  background: white;
+  width: 90%;
+  max-width: 600px;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+
+.close-btn:hover { color: #ef4444; }
+
+/* Modal Typography */
+.modal-content h2 {
+  font-size: 1.5rem;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.modal-content h4 {
+  font-size: 1.1rem;
+  color: #4f46e5;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal-desc {
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+
+.feature-list li { margin-bottom: 6px; }
+
+/* Tech Stack Tags */
+
+
+
+
+/* --- INTERVIEW TABS --- */
+.modal-tabs {
+  display: flex;
+  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 1.5rem;
+}
+
+.modal-tabs button {
+  flex: 1;
+  padding: 12px;
+  background: none;
+  border: none;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+
+.activity-box {
+  background: #fff7ed;
+  border-left: 4px solid #f97316;
+  padding: 1rem;
+  margin-top: 10px;
+  border-radius: 6px;
+}
+
+.aptitude-list li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.aptitude-list label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* Modal Footer */
+.modal-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+/* --- Interview Card Styling (Updated Color) --- */
+.info-card.interview {
+  background-color: #f3e8ff; /* Soft Purple Background */
+  border-left-color: #9333ea; /* Dark Purple Border */
+  color: #581c87; /* Deep Purple Text */
+}
+
+/* Modal Title for Interview */
+.modal-title.interview-title {
+  color: #7e22ce; /* Purple Title */
+}
+
+
+/* --- Rest of Modal Styling (Keep consistent) --- */
+.modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+.modal-content {
+  background: white; padding: 2rem; border-radius: 12px; width: 90%; max-width: 650px;
+  max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+}
+.close-btn {
+  position: absolute; top: 15px; right: 20px; font-size: 2rem; border: none; background: none; cursor: pointer; color: #9ca3af;
+}
+.modal-tabs { display: flex; border-bottom: 2px solid #e5e7eb; margin-bottom: 1.5rem; }
+.modal-tabs button { flex: 1; padding: 12px; border: none; background: none; cursor: pointer; font-weight: 600; color: #6b7280; border-bottom: 2px solid transparent; margin-bottom: -2px; }
+.feature-list, .aptitude-list { padding-left: 20px; color: #374151; margin-top: 10px; }
+.feature-list li, .aptitude-list li { margin-bottom: 8px; }
+.tech-tag { background: #f3f4f6; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; color: #1f2937; margin-right: 8px; display: inline-block; margin-bottom: 8px; border: 1px solid #e5e7eb; }
+/* --- ORIGINAL LAYOUT STYLES --- */
+
+.subtitle { color: #6b7280; margin-bottom: 2rem; font-size: 1rem; }
+
+/* Layout */
+.content-wrapper { display: flex; gap: 2rem; margin-top: 2rem; }
+.settings-panel { flex: 1; min-width: 250px; background: #fff; padding: 1.5rem; border-radius: 12px; height: fit-content; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); border: 1px solid #e5e7eb; }
+.tasks-panel { flex: 3; }
+
+/* Settings Inputs */
+.settings-panel h3 { margin-top: 0; font-size: 1.2rem; color: #374151; margin-bottom: 1.5rem; }
+.settings-panel label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #4b5563; font-size: 0.9rem; }
+.settings-panel input, .settings-panel select { width: 100%; padding: 10px; margin-bottom: 1.5rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; }
+.update-btn { width: 100%; padding: 12px; background-color: #4f46e5; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+.update-btn:hover { background-color: #4338ca; }
+
+
+/* Topics */
+.topics-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+/* Wrapper for Topic + Menu */
+.topic-wrapper { display: inline-flex; align-items: center; background: #f3f4f6; border-radius: 20px; padding-right: 8px; border: 1px solid #e5e7eb; }
+.topic-tag { background: transparent; border: none; padding: 8px 12px; cursor: pointer; color: #4b5563; font-size: 0.9rem; font-weight: 500; }
+.topic-wrapper.done .topic-tag { color: #065f46; font-weight: 600; }
+
+/* Problems */
+.task-item { display: flex; align-items: center; justify-content: space-between; padding: 12px; border-radius: 8px; border: 1px solid #f3f4f6; background: #fff; }
+.task-left { display: flex; align-items: center; gap: 12px; flex: 1; }
+.task-item:hover { background: #f9fafb; }
+.task-info { display: flex; flex-direction: column; }
+.task-name { font-weight: 500; color: #374151; }
+
+/* Info Cards */
+.info-card { padding: 15px; background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 8px; }
+.details-btn { background: white; border: 1px solid #d1d5db; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: #374151; }
+
+/* --- NEW: PROFESSIONAL 3-DOT MENU STYLES --- */
+.menu-container { position: relative; display: inline-block; }
+
+.dots-btn {
+  background: transparent; border: none; cursor: pointer;
+  font-size: 1.2rem; color: #9ca3af; padding: 4px 8px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.dots-btn:hover { background-color: #e5e7eb; color: #1f2937; }
+.menu-item.delete { color: #ef4444; border-top: 1px solid #f3f4f6; }
+.menu-item.delete:hover { background-color: #fee2e2; }
+
+/* Modal */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(2px); }
+.modal-content { background: white; padding: 2rem; border-radius: 12px; width: 90%; max-width: 650px; max-height: 85vh; overflow-y: auto; position: relative; }
+.close-btn { position: absolute; top: 15px; right: 20px; font-size: 2rem; border: none; background: none; cursor: pointer; color: #9ca3af; }
+.modal-tabs { display: flex; border-bottom: 2px solid #e5e7eb; margin-bottom: 1.5rem; }
+.modal-tabs button { flex: 1; padding: 12px; border: none; background: none; cursor: pointer; font-weight: 600; color: #6b7280; border-bottom: 2px solid transparent; }
+.modal-tabs button.active { color: #4f46e5; border-bottom-color: #4f46e5; }
+
+/* Aptitude List Item with Menu */
+.aptitude-item { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; padding: 5px; border-radius: 6px; }
+.aptitude-item:hover { background: #f9fafb; }
+
+
+/* --- CONTAINER & FONTS --- */
+
+
+h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #111827; }
+.subtitle { color: #6b7280; margin-bottom: 2rem; font-size: 1rem; }
+
+/* --- LAYOUT --- */
+.content-wrapper { display: flex; gap: 2rem; margin-top: 2rem; }
+.settings-panel { flex: 1; min-width: 250px; background: #fff; padding: 1.5rem; border-radius: 12px; height: fit-content; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); border: 1px solid #e5e7eb; }
+.tasks-panel { flex: 3; }
+
+/* --- SETTINGS PANEL --- */
+.settings-panel h3 { margin-top: 0; font-size: 1.2rem; color: #374151; margin-bottom: 1.5rem; }
+.settings-panel label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #4b5563; font-size: 0.9rem; }
+.settings-panel input, .settings-panel select { width: 100%; padding: 10px; margin-bottom: 1.5rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; }
+
+/* ✅ CHANGED: SAVE BUTTON TO GREEN */
+
+.update-btn:hover {
+  background-color: #059669; /* Darker Green */
+}
+
+
+/* --- TOPICS (Blue) --- */
+.topics-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* ✅ CHANGED: TOPIC TEXT TO BLUE */
+.topic-tag {
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #1e40af; /* Dark Blue Text */
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* DONE STATE (Green) */
+.topic-wrapper.done .topic-tag { color: #065f46; font-weight: 600; }
+
+/* --- PROBLEMS --- */
+.task-item { display: flex; align-items: center; justify-content: space-between; padding: 12px; border-radius: 8px; border: 1px solid #f3f4f6; background: #fff; transition: background 0.2s; }
+.task-left { display: flex; align-items: center; gap: 12px; flex: 1; }
+.task-item:hover { background: #f9fafb; }
+.task-info { display: flex; flex-direction: column; }
+.task-name { font-weight: 500; color: #374151; }
+
+/* --- INFO CARDS (Project/Interview) --- */
+.info-card { padding: 15px; background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 8px; }
+.details-btn { background: white; border: 1px solid #d1d5db; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: #374151; }
+
+/* --- 3-DOT MENU STYLES --- */
+.menu-container { position: relative; display: inline-block; }
+
+.dots-btn {
+  background: transparent; border: none; cursor: pointer;
+  font-size: 1.2rem; color: #6b7280; padding: 4px 8px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.dots-btn:hover { background-color: rgba(0,0,0,0.05); color: #111827; }
+
+.menu-item:hover { background-color: #f3f4f6; }
+.menu-item.delete { color: #ef4444; border-top: 1px solid #f3f4f6; }
+.menu-item.delete:hover { background-color: #fee2e2; }
+
+/* --- MODALS --- */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(2px); }
+.modal-content { background: white; padding: 2rem; border-radius: 12px; width: 90%; max-width: 650px; max-height: 85vh; overflow-y: auto; position: relative; }
+.close-btn { position: absolute; top: 15px; right: 20px; font-size: 2rem; border: none; background: none; cursor: pointer; color: #9ca3af; }
+.modal-tabs { display: flex; border-bottom: 2px solid #e5e7eb; margin-bottom: 1.5rem; }
+.modal-tabs button { flex: 1; padding: 12px; border: none; background: none; cursor: pointer; font-weight: 600; color: #6b7280; border-bottom: 2px solid transparent; }
+.modal-tabs button.active { color: #4f46e5; border-bottom-color: #4f46e5; }
+
+/* Aptitude List Item with Menu */
+.aptitude-item { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; padding: 8px; border-radius: 6px; border-bottom: 1px solid #f3f4f6; }
+.aptitude-item:hover { background: #f9fafb; }
+
+/* Tech Tags */
+.feature-list, .aptitude-list { padding-left: 20px; color: #374151; line-height: 1.6; }
+
+/* Responsive */
+
+/* --- CONTAINER & FONTS --- */
+.log-today-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #1f2937;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #111827; }
+.subtitle { color: #6b7280; margin-bottom: 2rem; font-size: 1rem; }
+
+/* --- LAYOUT --- */
+.content-wrapper { display: flex; gap: 2rem; margin-top: 2rem; }
+.settings-panel { flex: 1; min-width: 250px; background: #fff; padding: 1.5rem; border-radius: 12px; height: fit-content; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); border: 1px solid #e5e7eb; }
+.tasks-panel { flex: 3; }
+
+/* --- SETTINGS PANEL --- */
+.settings-panel h3 { margin-top: 0; font-size: 1.2rem; color: #374151; margin-bottom: 1.5rem; }
+.settings-panel label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #4b5563; font-size: 0.9rem; }
+.settings-panel input, .settings-panel select { width: 100%; padding: 10px; margin-bottom: 1.5rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; }
+
+/* ✅ SAVE BUTTON: GREEN */
+.update-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #10b981; /* Green */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 1rem;
+}
+.update-btn:hover {
+  background-color: #059669; /* Darker Green */
+}
+
+/* --- PROGRESS BAR --- */
+.progress-section { margin-bottom: 2rem; background: #f9fafb; padding: 1.5rem; border-radius: 12px; border: 1px solid #e5e7eb; }
+.progress-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 0.5rem; color: #374151; }
+.progress-track { width: 100%; height: 10px; background-color: #e5e7eb; border-radius: 5px; overflow: hidden; }
+.progress-fill { height: 100%; background-color: #4f46e5; transition: width 0.4s ease-in-out; }
+.progress-percent { color: #4f46e5; }
+
+/* --- SECTIONS --- */
+.section-block { margin-bottom: 2rem; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #f3f4f6; }
+.section-block h3 { margin-top: 0; color: #1f2937; margin-bottom: 15px; }
+
+/* --- TOPICS (✅ FIXED: BLUE/INDIGO STYLE) --- */
+.topics-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* Wrapper for Topic + Menu */
+
+
+.topic-wrapper:hover {
+  background-color: #c7d2fe; /* Slightly darker indigo on hover */
+}
+/* Add to src/pages/LogToday.css */
+
+/* The Green Star Symbol */
+.completed-star {
+  color: #10b981; /* Success Green */
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-left: 6px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* Update Topic Wrapper to handle the star nicely */
+.topic-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #f3f4f6;
+  border-radius: 20px;
+  padding-right: 12px; /* Extra space for menu */
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+}
+
+/* Remove the old "done" background style if you only want the star */
+/* Or keep it subtle */
+.topic-wrapper.done {
+  border-color: #34d399; /* Green Border to hint completion */
+  background: #ecfdf5;   /* Very light green background */
+}
+
+/* Topic Text */
+.topic-tag {
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #4338ca; /* Dark Indigo Text (Matches screenshot) */
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* DONE STATE (Green) */
+.topic-wrapper.done { background: #ecfdf5; border-color: #34d399; }
+.topic-wrapper.done .topic-tag { color: #065f46; font-weight: 600; }
+
+/* --- PROBLEMS --- */
+.problem-list { display: flex; flex-direction: column; gap: 10px; }
+.task-item { display: flex; align-items: center; justify-content: space-between; padding: 12px; border-radius: 8px; border: 1px solid #f3f4f6; background: #fff; transition: background 0.2s; }
+.task-left { display: flex; align-items: center; gap: 12px; flex: 1; }
+.task-item:hover { background: #f9fafb; }
+.task-info { display: flex; flex-direction: column; }
+.task-name { font-weight: 500; color: #374151; }
+.task-desc { color: #6b7280; font-size: 0.85rem; }
+
+/* --- INFO CARDS --- */
+.info-card { padding: 15px; background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 8px; }
+.info-card.disabled { opacity: 0.6; pointer-events: none; filter: grayscale(1); }
+.card-header-row { display: flex; justify-content: space-between; align-items: center; width: 100%; font-weight: 500; }
+.card-actions { display: flex; align-items: center; gap: 10px; }
+.details-btn { background: white; border: 1px solid #d1d5db; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: #374151; }
+
+/* --- 3-DOT MENU STYLES --- */
+.menu-container { position: relative; display: inline-block; }
+
+.dots-btn {
+  background: transparent; border: none; cursor: pointer;
+  font-size: 1.2rem; color: #6b7280; padding: 4px 8px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.dots-btn:hover { background-color: rgba(0,0,0,0.05); color: #111827; }
+
+.dropdown-menu {
+  position: absolute; top: 100%; right: 0; width: 140px;
+  background: white; border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb; z-index: 100; overflow: hidden;
+  animation: fadeIn 0.1s ease-out;
+}
+
+.menu-item {
+  padding: 10px 12px; font-size: 0.9rem; color: #374151; cursor: pointer;
+  display: flex; align-items: center; gap: 8px; transition: background 0.1s;
+}
+.menu-item:hover { background-color: #f3f4f6; }
+.menu-item.delete { color: #ef4444; border-top: 1px solid #f3f4f6; }
+.menu-item.delete:hover { background-color: #fee2e2; }
+
+/* --- MODALS --- */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(2px); }
+.modal-content { background: white; padding: 2rem; border-radius: 12px; width: 90%; max-width: 650px; max-height: 85vh; overflow-y: auto; position: relative; }
+.close-btn { position: absolute; top: 15px; right: 20px; font-size: 2rem; border: none; background: none; cursor: pointer; color: #9ca3af; }
+.modal-tabs { display: flex; border-bottom: 2px solid #e5e7eb; margin-bottom: 1.5rem; }
+.modal-tabs button { flex: 1; padding: 12px; border: none; background: none; cursor: pointer; font-weight: 600; color: #6b7280; border-bottom: 2px solid transparent; }
+.modal-tabs button.active { color: #4f46e5; border-bottom-color: #4f46e5; }
+.modal-body { padding: 10px 0; }
+
+/* Aptitude List Item with Menu */
+.aptitude-item { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; padding: 8px; border-radius: 6px; border-bottom: 1px solid #f3f4f6; }
+.aptitude-item:hover { background: #f9fafb; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Edit Modal */
+.edit-popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; display: flex; justify-content: center; align-items: center; }
+.edit-popup { background: white; padding: 20px; border-radius: 10px; width: 400px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+.edit-popup h3 { margin-top: 0; }
+.edit-popup textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; margin: 10px 0; font-family: inherit; }
+.popup-actions { display: flex; justify-content: flex-end; gap: 10px; }
+
+/* Checkbox Styles */
+.completion-checkbox { display: flex; align-items: center; gap: 10px; padding: 15px; background: #ecfdf5; color: #065f46; border-radius: 8px; cursor: pointer; font-weight: 700; justify-content: center; margin-top: 20px; }
+.completion-checkbox.interview-check { background: #f5f3ff; color: #7c3aed; }
+.completion-checkbox input { width: 20px; height: 20px; accent-color: currentColor; }
+
+/* Tech Tags */
+.tech-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.tech-tag { background: #e0e7ff; color: #4338ca; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; }
+.feature-list, .aptitude-list { padding-left: 20px; color: #374151; line-height: 1.6; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content-wrapper { flex-direction: column; }
+  .settings-panel { width: 100%; }
+}
+

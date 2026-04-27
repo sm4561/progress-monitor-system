@@ -1,16 +1,105 @@
-# React + Vite
+# Progress Monitor System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + Firebase based Progress Monitoring System designed to help users track daily productivity, manage tasks, analyze performance trends, and monitor personal progress through an interactive dashboard.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- User Authentication (Login / Signup)
+- Protected Routes for secure navigation
+- Dashboard with analytics visualization
+- Daily progress tracking system
+- Weekly and monthly performance charts
+- Admin panel support
+- Reminder and journal management modules
+- Responsive UI design
+- Firebase Firestore database integration
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Frontend:
+- React.js
+- JavaScript (ES6)
+- React Router
+- CSS
+
+Backend / Database:
+- Firebase Authentication
+- Firebase Firestore
+
+Tools:
+- Vite
+- Git & GitHub
+
+---
+
+## Project Structure
+progress-monitor-system
+│
+├── public/
+├── src/
+│ ├── components/
+│ ├── pages/
+│ ├── context/
+│ ├── hooks/
+│ ├── firebase/
+│ └── utils/
+│
+├── index.html
+├── package.json
+└── vite.config.js
+
+
+---
+
+## Installation & Setup
+
+Clone the repository:
+
+
+git clone https://github.com/sm4561/progress-monitor-system.git
+
+
+Navigate into project folder:
+
+
+cd progress-monitor-system
+
+
+Install dependencies:
+
+
+npm install
+
+
+Run the project:
+
+
+npm run dev
+
+
+Open browser:
+
+
+http://localhost:5173
+
+
+---
+
+## Future Improvements
+
+- Role-based access control
+- Dark mode UI
+- Export analytics reports
+- Notification integration
+- Deployment on Firebase Hosting
+
+---
+
+## Author
+
+Shubham Mishra  
+B.Tech CSE Student | Frontend Developer | Java & DSA Learner
